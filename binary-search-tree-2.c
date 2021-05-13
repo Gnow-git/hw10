@@ -50,7 +50,7 @@ int freeBST(Node* head); /* free all memories allocated to the tree */
 /* you may add your own defined functions if necessary */
 
 
-void printStack();
+//void printStack();
 
 
 
@@ -104,7 +104,7 @@ int main()
 			break;
 
 		case 'p': case 'P':
-			printStack();
+			//printStack();
 			break;
 
 		default:
@@ -140,7 +140,8 @@ int initializeBST(Node** h) {
 
 void recursiveInorder(Node* ptr)
 {
-	if(ptr) {
+	if(ptr == NULL)return;
+	else {
 		recursiveInorder(ptr->left);
 		printf(" [%d] ", ptr->key);
 		recursiveInorder(ptr->right);
@@ -152,6 +153,7 @@ void recursiveInorder(Node* ptr)
  */
 void iterativeInorder(Node* node)
 {
+
 }
 
 /**
@@ -241,10 +243,17 @@ int freeBST(Node* head)
 
 Node* pop()
 {
+	Node* node = NULL;
+	if(top == -1){
+		return node;
+	}
 }
 
 void push(Node* aNode)
 {
+	if(top >= MAX_STACK_SIZE-1){
+		return;
+	}
 }
 
 
