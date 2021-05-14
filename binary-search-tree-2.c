@@ -153,7 +153,23 @@ void recursiveInorder(Node* ptr)
  */
 void iterativeInorder(Node* node)
 {
+	Node* ptr;
+	top = 0;
 
+	ptr = node;
+	while(1){
+		while(ptr != NULL){
+			push(ptr);
+			ptr = ptr->left;
+		}
+
+		ptr = pop();
+		if(ptr == NULL) break;
+		printf(" [%d] ", ptr->key);
+		ptr = ptr->right;
+	}
+	
+	
 }
 
 /**
@@ -244,9 +260,14 @@ int freeBST(Node* head)
 Node* pop()
 {
 	Node* node = NULL;
-	if(top == -1){
+	if(top == -2){
 		return node;
 	}
+
+	node = stack[top];
+	top--;
+	return node;
+
 }
 
 void push(Node* aNode)
@@ -254,6 +275,8 @@ void push(Node* aNode)
 	if(top >= MAX_STACK_SIZE-1){
 		return;
 	}
+	top++;
+	stack[top] = aNode;
 }
 
 
