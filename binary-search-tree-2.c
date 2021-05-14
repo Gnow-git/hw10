@@ -177,6 +177,31 @@ void iterativeInorder(Node* node)
  */
 void levelOrder(Node* ptr)
 {
+	Node* node;
+	front ;
+	rear ;
+
+	if(ptr == NULL){
+		return;
+	}
+
+	enQueue(ptr);
+
+	while(1) {
+		node = deQueue();
+		if(node == NULL){
+			break;
+		}
+
+		printf(" [%d] ", node->key);
+		if(node->left != NULL){
+			enQueue(node->left);
+		}
+		if(node->right != NULL){
+			enQueue(node->right);
+		}
+	}
+
 }
 
 
@@ -283,10 +308,24 @@ void push(Node* aNode)
 
 Node* deQueue()
 {
+	Node* node = NULL;
+
+	if(front == rear){
+		return node;
+	}
+
+	front++;
+	node = queue[front];
+	return node;
 }
 
 void enQueue(Node* aNode)
 {
+	if(rear == MAX_QUEUE_SIZE){
+		return;
+	}
+	rear++;
+	queue[rear] = aNode;
 }
 
 
